@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<script src="https://cdn.jsdelivr.net/npm/lz-string/libs/lz-string.min.js"></script>
+</head>
+
+<body>
+
+<script>
+
+const payload = location.hash.slice(1);
+
+if(payload){
+
+    const html =
+    LZString.decompressFromEncodedURIComponent(payload);
+
+    document.open();
+    document.write(html);
+    document.close();
+
+}else{
+
+    document.body.innerHTML = `
+    <h2>Nenhum payload recebido</h2>
+    `;
+
+}
+
+</script>
+
+</body>
+</html>
